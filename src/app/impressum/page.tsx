@@ -26,6 +26,13 @@ export default function Impressum() {
           </p>
         </div>
         <div>
+          <h2 className="font-semibold text-foreground">Umsatzsteuer-ID</h2>
+          <p className="mt-2">
+            Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
+            {contact.vatId}
+          </p>
+        </div>
+        <div>
           <h2 className="font-semibold text-foreground">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
           <p className="mt-2">
             {contact.person}<br />

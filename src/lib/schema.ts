@@ -16,6 +16,7 @@ export const businessSchema = {
   image: url("/images/jan-bruchwalski.webp"),
   telephone: "+49 160 7534434",
   email: site.contact.email,
+  vatID: site.contact.vatId,
   address: {
     "@type": "PostalAddress",
     streetAddress: site.contact.street,

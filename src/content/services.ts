@@ -66,7 +66,7 @@ export const services: Service[] = [
       {
         heading: "Typische Einsätze",
         paragraphs: [
-          "Ich werde von Agenturen, Eventtechnik-Firmen und Veranstaltern gebucht – entweder als Bildmischer mit eigenem Regieplatz oder als erfahrene Verstärkung für ein bestehendes Team. Zu meinen Einsätzen gehören unter anderem regelmäßige Livestreams aus den Ministergärten in Berlin.",
+          "Ich werde von Agenturen, Eventtechnik-Firmen und Veranstaltern gebucht – entweder als Bildmischer mit eigenem, kompakten Regie-Setup oder als erfahrene Verstärkung für ein bestehendes Team. Zu meinen Einsätzen gehören unter anderem regelmäßige Livestreams aus den Ministergärten in Berlin.",
         ],
         bullets: [
           "Fachkonferenzen, Kongresse und Hauptversammlungen",
@@ -107,7 +107,7 @@ export const services: Service[] = [
     faq: [
       { q: "Was ist der Unterschied zwischen Bildmischer und Regie?", a: "Die Regie gibt bei großen Produktionen die inhaltliche Richtung vor, der Bildmischer setzt die Bildwechsel technisch um. Bei Konferenzen und Livestreams übernehme ich häufig beides in einer Person: Ich entscheide, welches Bild zu sehen ist, und mische es selbst." },
       { q: "Was kostet ein Bildmischer für eine Veranstaltung?", a: costAnswer },
-      { q: "Bringen Sie einen eigenen Bildmischer mit?", a: "Je nach Produktion arbeite ich mit eigenem Regie-Setup oder mit der Technik Ihres Dienstleisters bzw. der Location. Das klären wir im Briefing." },
+      { q: "Bringen Sie einen eigenen Bildmischer mit?", a: "Für kleinere Produktionen bringe ich ein eigenes, kompaktes Regie-Setup mit. Für größere Produktionen ergänze ich es auf Wunsch um Mietequipment – oder arbeite mit der Technik Ihres Dienstleisters bzw. der Location. Das klären wir im Briefing." },
       { q: "Wie früh sollte ich buchen?", a: "Je früher, desto besser – besonders in der Konferenzsaison im Frühjahr und Herbst. Kurzfristige Anfragen sind trotzdem möglich: Fragen Sie Ihr Wunschdatum einfach an." },
       { q: "Arbeiten Sie auch außerhalb von Berlin?", a: "Ja. Mein Standort ist Berlin-Spandau, ich bin in ganz Berlin, in Brandenburg und deutschlandweit im Einsatz." },
     ],
@@ -191,6 +191,7 @@ export const services: Service[] = [
     faq: [
       { q: "Was kostet ein Livestream in Berlin?", a: costAnswer },
       { q: "Auf welche Plattformen kann gestreamt werden?", a: "Auf alle gängigen Plattformen wie YouTube, Vimeo, LinkedIn oder Facebook sowie auf eigene Streaming-Server und Event-Plattformen – auf Wunsch auch auf mehrere Ziele gleichzeitig." },
+      { q: "Bringen Sie die Technik mit?", a: "Ein kompaktes Livestream-Setup mit Bildmischer und Streaming-Rechner bringe ich selbst mit. Für größere Produktionen ergänze ich es auf Wunsch um Mietequipment oder arbeite mit der vorhandenen Technik der Location." },
       { q: "Welche Internetverbindung wird benötigt?", a: "Ideal ist eine kabelgebundene Leitung mit stabilem Upload. Ich kläre die Anbindung vorab mit der Location und plane bei Bedarf eine Backup-Verbindung ein." },
       { q: "Erhalte ich eine Aufzeichnung des Livestreams?", a: "Ja. Der Stream wird parallel lokal aufgezeichnet und Ihnen im Anschluss übergeben – auf Wunsch auch die einzelnen Kamerasignale für einen späteren Schnitt." },
       { q: "Können Speaker per Video zugeschaltet werden?", a: "Ja. Remote-Gäste lassen sich per Video-Call in den Livestream und auf die Saalprojektion holen – inklusive Rückkanal, damit sie das Publikum hören." },

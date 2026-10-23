@@ -54,6 +54,17 @@ eine E-Mail versendet. Lokal mit
 
 ## Deployment bei all-inkl
 
-1. `npm run build`
-2. Inhalt von `out/` (inkl. `.htaccess`) per FTP in das Webverzeichnis der Domain laden.
-3. Vorher WordPress-Backup anlegen und die alten Dateien in einen Unterordner verschieben.
+Jeder Push auf `main` baut die Seite und lädt sie automatisch per FTPS hoch
+(`.github/workflows/deploy.yml`). Danach werden neue Inhalte per IndexNow gemeldet.
+
+Einmalig einrichten:
+
+1. Bei all-inkl im KAS unter **FTP** einen eigenen FTP-Benutzer anlegen, dessen
+   Verzeichnis das Webverzeichnis der Domain ist.
+2. Auf GitHub unter **Settings → Secrets and variables → Actions** drei Secrets anlegen:
+   `FTP_SERVER` (z. B. `w0123456.kasserver.com`), `FTP_USERNAME`, `FTP_PASSWORD`.
+3. Vorher die WordPress-Dateien sichern und aus dem Webverzeichnis entfernen
+   (insbesondere `index.php`, sonst wird weiter WordPress angezeigt).
+4. Unter **Actions → Deploy zu all-inkl → Run workflow** den ersten Upload starten.
+
+Ohne Secrets wird nur gebaut, nichts hochgeladen.

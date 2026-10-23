@@ -16,6 +16,7 @@ export const site = {
     city: "13595 Berlin",
     email: "bruchwalski@medienproduktionbruchwalski.de",
     phone: "0160 7534434",
+    vatId: "DE353122073",
     phoneHref: "tel:+491607534434",
     whatsapp: "https://wa.me/491607534434?text=" + encodeURIComponent("Hallo Jan, ich habe eine Anfrage zu einer Produktion:"),
   },
