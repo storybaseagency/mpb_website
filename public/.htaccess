@@ -7,6 +7,11 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://medienproduktionbruchwalski.de/$1 [R=301,L]
 
+# Zugangsdaten des Kontaktformulars nie direkt ausliefern
+<Files "kontakt-config.php">
+  Require all denied
+</Files>
+
 # Frühere URLs auf die neuen Leistungsseiten umleiten
 Redirect 301 /leistungen/videoproduktion/ /videoproduktion-berlin/
 Redirect 301 /leistungen/live-recording/ /livestream-produktion-berlin/

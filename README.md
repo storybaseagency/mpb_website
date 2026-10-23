@@ -49,7 +49,7 @@ Nach jedem Deployment neue Inhalte an Bing & Co. melden: `npm run indexnow`.
 ## Kontaktformular
 
 Das Formular schickt die Daten an `public/kontakt.php`, das bei all-inkl per PHP
-eine E-Mail versendet. Lokal mit
+eine E-Mail per SMTP versendet (Zugangsdaten siehe Deployment). Lokal mit
 `npm run dev` funktioniert der Versand nicht – nur auf dem Server.
 
 ## Deployment bei all-inkl
@@ -68,3 +68,14 @@ Einmalig einrichten:
 4. Unter **Actions → Deploy zu all-inkl → Run workflow** den ersten Upload starten.
 
 Ohne Secrets wird nur gebaut, nichts hochgeladen.
+
+### Kontaktformular (SMTP)
+
+Das Formular verschickt per SMTP über das all-inkl-Postfach. Dafür zwei weitere Secrets:
+
+- `SMTP_USERNAME` – Login des Postfachs `bruchwalski@medienproduktionbruchwalski.de` (KAS → E-Mail → Postfächer)
+- `SMTP_PASSWORD` – Passwort dieses Postfachs
+- optional `SMTP_HOST` – sonst wird `FTP_SERVER` verwendet
+
+Das Deployment schreibt daraus `kontakt-config.php` auf den Server (per `.htaccess` gesperrt).
+Ohne diese Secrets versucht das Formular den Versand per PHP `mail()`.

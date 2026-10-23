@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
 
@@ -24,6 +25,15 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+
+      # SMTP-Zugangsdaten für das Kontaktformular aus den Secrets auf den Server schreiben
+      - name: SMTP-Konfiguration erzeugen
+        if: env.SMTP_PASSWORD != ''
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST || secrets.FTP_SERVER }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+        run: >
+          php -r 'file_put_contents("out/kontakt-config.php", "<?php return " . var_export(["host" => getenv("SMTP_HOST"), "user" => getenv("SMTP_USERNAME"), "pass" => getenv("SMTP_PASSWORD")], true) . ";\n");'
 
       # Ohne hinterlegte FTP-Zugangsdaten wird nur gebaut, nicht hochgeladen.
       - name: Upload per FTPS
