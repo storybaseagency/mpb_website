@@ -1,0 +1,11 @@
+# all-inkl (Apache): wird beim Build nach out/.htaccess kopiert.
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+# HTTPS und www erzwingen
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.medienproduktionbruchwalski.de/$1 [R=301,L]
+
+# Weiterleitungen alter WordPress-URLs (werden nach dem Inhalts-Import ergänzt), z. B.:
+# Redirect 301 /alte-seite/ /leistungen/videoproduktion/
