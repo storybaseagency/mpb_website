@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
+import ServiceCards from "@/components/ServiceCards";
 import Testimonials from "@/components/Testimonials";
-import { about, gear, services, site, testimonials } from "@/content/site";
+import { services } from "@/content/services";
+import { about, gear, site, testimonials } from "@/content/site";
+
+export const metadata: Metadata = {
+  title: { absolute: site.homeTitle },
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -11,7 +19,7 @@ export default function Home() {
         <Image src="/images/hero-kamera.webp" alt="" fill priority sizes="100vw" className="-z-10 object-cover opacity-55" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/85 to-ink/30" />
         <div className="mx-auto max-w-6xl px-4 pb-28 pt-24 sm:px-6 sm:pb-36 sm:pt-32">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent">Jan Bruchwalski</p>
+          <p className="text-sm uppercase tracking-[0.2em] text-accent">Jan Bruchwalski · Berlin</p>
           <h1 className="font-display mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] sm:text-6xl">
             {site.headline}
           </h1>
@@ -30,7 +38,7 @@ export default function Home() {
       <section id="ueber-mich" className="scroll-mt-16">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-24 sm:px-6 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
-            <Image src={about.image} alt="Jan Bruchwalski mit Kamera" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src={about.image} alt="Jan Bruchwalski, Kameramann und Bildmischer aus Berlin" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-accent">{about.title}</p>
@@ -38,6 +46,9 @@ export default function Home() {
             {about.paragraphs.map((p) => (
               <p key={p} className="mt-5 text-muted">{p}</p>
             ))}
+            <Link href="/ueber-jan-bruchwalski/" className="mt-6 inline-block font-medium text-accent hover:underline">
+              Mehr über Jan Bruchwalski →
+            </Link>
           </div>
         </div>
       </section>
@@ -46,32 +57,14 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
           <div className="max-w-2xl">
             <p className="text-sm uppercase tracking-[0.2em] text-accent">Leistungen</p>
-            <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">Video, Bildregie & Liveproduktion</h2>
+            <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">Video, Bildregie & Liveproduktion in Berlin</h2>
+            <p className="mt-4 text-muted">
+              Agenturen, Eventtechnik-Firmen und Veranstalter buchen mich als Bildmischer, Kameramann und
+              Livestream-Techniker – einzeln oder für die komplette Produktion.
+            </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {services.map((s, i) => (
-              <Link
-                key={s.slug}
-                href={`/leistungen/${s.slug}/`}
-                className="group overflow-hidden rounded-2xl border border-border bg-background transition hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={s.image}
-                    alt={s.title}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="text-xs font-medium text-accent">0{i + 1}</p>
-                  <h3 className="font-display mt-1 text-xl font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-muted">{s.teaser}</p>
-                  <p className="mt-4 text-sm font-medium group-hover:text-accent">Mehr erfahren →</p>
-                </div>
-              </Link>
-            ))}
+          <div className="mt-12">
+            <ServiceCards items={services} />
           </div>
         </div>
       </section>
@@ -88,6 +81,12 @@ export default function Home() {
               <p className="mt-1 text-muted">{g.text}</p>
             </div>
           ))}
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <p className="text-sm font-semibold">Einsatzgebiet</p>
+            <p className="mt-1 text-muted">
+              Standort Berlin-Spandau – im Einsatz in ganz Berlin, in Potsdam und Brandenburg sowie deutschlandweit.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -98,6 +97,9 @@ export default function Home() {
           <div className="mt-12">
             <Testimonials items={testimonials} />
           </div>
+          <Link href="/referenzen/" className="mt-8 inline-block font-medium text-accent hover:underline">
+            Alle Referenzen ansehen →
+          </Link>
         </div>
       </section>
 

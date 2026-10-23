@@ -12,29 +12,39 @@ npm run build   # erzeugt den Ordner out/
 
 ## Inhalte pflegen
 
-Alle Texte, Kundenstimmen, Kontaktdaten und die drei Leistungen stehen in `src/content/site.ts`.
-Neue Videos, Texte oder Fragen & Antworten werden ebenfalls dort ergänzt.
-Bilder liegen in `public/images/`.
+- `src/content/site.ts` – Kontaktdaten, Über mich, Kundenstimmen, Technik, Projektberichte
+- `src/content/services.ts` – die fünf Leistungsseiten (Texte, FAQ, Bilder, Video)
+- `src/lib/schema.ts` – strukturierte Daten (z. B. weitere Profile unter `sameAs`)
+- Bilder liegen in `public/images/`
 
-### Video auf einer Landingpage einsetzen
+### Video auf einer Leistungsseite einsetzen
 
-In `src/content/site.ts` bei der Leistung das Feld `landing.video` setzen:
+In `src/content/services.ts` bei der Leistung das Feld `video` setzen:
 
 - YouTube: `https://www.youtube-nocookie.com/embed/VIDEO-ID`
 - Vimeo: `https://player.vimeo.com/video/VIDEO-ID`
 - Eigene Datei: MP4 nach `public/videos/` legen und `/videos/datei.mp4` eintragen
 
-Ist das Feld leer, erscheint der Platzhalter „Video folgt in Kürze“.
+Ist das Feld leer, wird stattdessen das Titelbild der Leistung gezeigt.
+YouTube und Vimeo laden erst nach Klick (Datenschutz).
 
 ## Seiten
 
 | URL | Zweck |
 | --- | --- |
 | `/` | Startseite |
-| `/leistungen/videoproduktion/` | Landingpage Leistung 1 |
-| `/leistungen/live-recording/` | Landingpage Leistung 2 |
-| `/leistungen/technischer-support/` | Landingpage Leistung 3 |
+| `/bildregie-bildmischer-berlin/` | Leistung: Bildregie & Bildmischer |
+| `/livestream-produktion-berlin/` | Leistung: Livestream & Aufzeichnung |
+| `/technischer-livestream-support-berlin/` | Leistung: Technischer Support |
+| `/kameramann-berlin/` | Leistung: Kameramann |
+| `/videoproduktion-berlin/` | Leistung: Videoproduktion |
+| `/referenzen/`, `/ueber-jan-bruchwalski/`, `/faq/` | Vertrauen & Fragen |
 | `/impressum/`, `/datenschutz/` | Pflichtseiten |
+
+## SEO
+
+Offene Aufgaben außerhalb der Website: `docs/seo-checkliste.md`.
+Nach jedem Deployment neue Inhalte an Bing & Co. melden: `npm run indexnow`.
 
 ## Kontaktformular
 

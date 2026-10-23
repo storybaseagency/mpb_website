@@ -15,7 +15,7 @@ export default function Header() {
           <span className="text-accent">.</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm md:flex">
+        <nav className="hidden items-center gap-7 text-sm lg:flex">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className="text-stone-300 transition hover:text-white">
               {item.label}
@@ -31,7 +31,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="md:hidden"
+          className="lg:hidden"
           aria-label="Menü öffnen"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -43,7 +43,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 px-4 pb-4 md:hidden">
+        <nav className="border-t border-white/10 px-4 pb-4 lg:hidden">
           {nav.map((item) => (
             <Link
               key={item.href}

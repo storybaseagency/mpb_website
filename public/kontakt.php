@@ -24,6 +24,7 @@ $name = $clean($_POST['name'] ?? '');
 $email = $clean($_POST['email'] ?? '');
 $datum = $clean($_POST['datum'] ?? '');
 $betreff = $clean($_POST['betreff'] ?? 'Anfrage');
+$quelle = $clean($_POST['quelle'] ?? '');
 $nachricht = trim((string)($_POST['nachricht'] ?? ''));
 
 if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($_POST['datenschutz'])) {
@@ -33,7 +34,7 @@ if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMA
 }
 
 $subject = '=?UTF-8?B?' . base64_encode("Website-Anfrage: $betreff") . '?=';
-$body = "Name: $name\nE-Mail: $email\nWunschdatum: " . ($datum ?: '-') . "\nLeistung: $betreff\n\n$nachricht\n";
+$body = "Name: $name\nE-Mail: $email\nWunschdatum: " . ($datum ?: '-') . "\nLeistung: $betreff\nGefunden über: " . ($quelle ?: '-') . "\n\n$nachricht\n";
 $headers = "From: $from\r\nReply-To: $email\r\nContent-Type: text/plain; charset=UTF-8\r\n";
 
 $ok = mail($to, $subject, $body, $headers);

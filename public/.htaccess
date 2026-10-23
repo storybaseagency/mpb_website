@@ -7,5 +7,22 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.medienproduktionbruchwalski.de/$1 [R=301,L]
 
-# Weiterleitungen alter WordPress-URLs (werden nach dem Inhalts-Import ergänzt), z. B.:
-# Redirect 301 /alte-seite/ /leistungen/videoproduktion/
+# Frühere URLs auf die neuen Leistungsseiten umleiten
+Redirect 301 /leistungen/videoproduktion/ /videoproduktion-berlin/
+Redirect 301 /leistungen/live-recording/ /livestream-produktion-berlin/
+Redirect 301 /leistungen/technischer-support/ /technischer-livestream-support-berlin/
+RedirectMatch 301 ^/leistungen/?$ /#leistungen
+
+# Reste der alten WordPress-Installation
+RedirectMatch 301 ^/(elementor-7|elementor-10|sample-page)/?$ /
+RedirectMatch 301 ^/(feed|comments/feed)/?$ /
+RedirectMatch 410 ^/(wp-login\.php|xmlrpc\.php|wp-admin/?.*)$
+
+# Caching für statische Dateien
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

@@ -5,6 +5,8 @@ import { useState } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const sources = ["Google-Suche", "Google Maps", "ChatGPT / KI-Assistent", "LinkedIn", "Empfehlung", "Sonstiges"];
+
 // Sendet an public/kontakt.php (läuft bei all-inkl per PHP, kein Node-Server nötig).
 export default function ContactForm({ subject }: { subject?: string }) {
   const [status, setStatus] = useState<Status>("idle");
@@ -46,9 +48,16 @@ export default function ContactForm({ subject }: { subject?: string }) {
         E-Mail*
         <input name="email" type="email" required className={field} autoComplete="email" />
       </label>
-      <label className="grid gap-1.5 text-sm sm:col-span-2">
+      <label className="grid gap-1.5 text-sm">
         Wunschdatum
         <input name="datum" type="date" className={`${field} [color-scheme:dark]`} />
+      </label>
+      <label className="grid gap-1.5 text-sm">
+        Wie haben Sie mich gefunden?
+        <select name="quelle" defaultValue="" className={`${field} [color-scheme:dark]`}>
+          <option value="">Bitte wählen</option>
+          {sources.map((s) => <option key={s}>{s}</option>)}
+        </select>
       </label>
       <label className="grid gap-1.5 text-sm sm:col-span-2">
         Nachricht*
