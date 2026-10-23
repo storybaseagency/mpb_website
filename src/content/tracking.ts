@@ -2,7 +2,7 @@
 export const tracking = {
   googleAdsId: "AW-18306146694",
   conversions: {
-    form: "", // Label der Conversion-Aktion „Kontaktformular“
+    form: "wI3UCN7xjKcdEIbDhplE", // Kontaktformular
     whatsapp: "", // Label „WhatsApp-Klick“
     phone: "", // Label „Telefon-Klick“
   },
