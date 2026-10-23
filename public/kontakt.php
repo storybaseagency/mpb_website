@@ -5,7 +5,7 @@
 
 $to = 'bruchwalski@medienproduktionbruchwalski.de';
 // Absender muss das Postfach sein, an dem sich der SMTP-Versand anmeldet.
-$from = 'bruchwalski@medienproduktionbruchwalski.de';
+$from = 'website@medienproduktionbruchwalski.de';
 $fromName = 'Website Medienproduktion Bruchwalski';
 
 header('Content-Type: application/json; charset=utf-8');

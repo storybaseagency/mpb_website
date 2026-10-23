@@ -73,7 +73,7 @@ Ohne Secrets wird nur gebaut, nichts hochgeladen.
 
 Das Formular verschickt per SMTP über das all-inkl-Postfach. Dafür zwei weitere Secrets:
 
-- `SMTP_USERNAME` – Login des Postfachs `bruchwalski@medienproduktionbruchwalski.de` (KAS → E-Mail → Postfächer)
+- `SMTP_USERNAME` – Login des Postfachs `website@medienproduktionbruchwalski.de` (KAS → E-Mail → Postfächer)
 - `SMTP_PASSWORD` – Passwort dieses Postfachs
 - optional `SMTP_HOST` – sonst wird `FTP_SERVER` verwendet
 
