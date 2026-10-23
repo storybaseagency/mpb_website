@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { nav, site } from "@/content/site";
@@ -10,9 +11,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/85 text-ink-foreground backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="font-display text-lg font-semibold">
-          {site.shortName}
-          <span className="text-accent">.</span>
+        <Link href="/" aria-label={`${site.name} – Startseite`}>
+          <Image
+            src="/images/logo-horizontal-weiss.webp"
+            alt={site.name}
+            width={1200}
+            height={240}
+            priority
+            className="h-10 w-auto sm:h-11"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm lg:flex">

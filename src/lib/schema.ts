@@ -13,6 +13,7 @@ export const businessSchema = {
   name: site.name,
   description: site.description,
   url: url(),
+  logo: url("/images/signet.png"),
   image: url("/images/jan-bruchwalski.webp"),
   telephone: "+49 160 7534434",
   email: site.contact.email,

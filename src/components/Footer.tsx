@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
@@ -7,7 +8,7 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-ink text-stone-400">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-display text-lg font-semibold text-white">{site.name}</p>
+          <Image src="/images/logo-horizontal-weiss.webp" alt={site.name} width={1200} height={240} className="h-10 w-auto" />
           <p className="mt-2 text-sm">Kameramann & Bildmischer in Berlin</p>
           <address className="mt-4 text-sm not-italic">
             {site.contact.person}<br />
