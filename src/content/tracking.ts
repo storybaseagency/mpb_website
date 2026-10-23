@@ -3,7 +3,7 @@ export const tracking = {
   googleAdsId: "AW-18306146694",
   conversions: {
     form: "wI3UCN7xjKcdEIbDhplE", // Kontaktformular
-    whatsapp: "", // Label „WhatsApp-Klick“
+    whatsapp: "0IvuCM20iacdEIbDhplE", // Kontakt-Whatsapp
     phone: "Agu4CPvhgacdEIbDhplE", // Kontakt-Telefon
   },
 };
