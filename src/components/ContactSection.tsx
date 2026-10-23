@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import { WhatsAppIcon } from "@/components/WhatsAppButton";
 import { site } from "@/content/site";
 
 export default function ContactSection({
@@ -19,17 +20,32 @@ export default function ContactSection({
           <p className="mt-4 text-stone-300">
             Schicken Sie mir Ihr Wunschdatum und ein paar Eckdaten zur Produktion – ich melde mich zeitnah.
           </p>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 text-sm text-stone-300 hover:text-white"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
-            </svg>
-            Jan Bruchwalski auf LinkedIn
-          </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={site.contact.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-medium text-white transition hover:brightness-105"
+            >
+              <WhatsAppIcon /> WhatsApp
+            </a>
+            <a
+              href={site.contact.phoneHref}
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-medium transition hover:bg-white/10"
+            >
+              {site.contact.phone}
+            </a>
+          </div>
+          <ul className="mt-8 space-y-2 text-sm text-stone-300">
+            <li>
+              <a href={`mailto:${site.contact.email}`} className="hover:text-white">{site.contact.email}</a>
+            </li>
+            <li>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                Jan Bruchwalski auf LinkedIn
+              </a>
+            </li>
+          </ul>
         </div>
         <ContactForm subject={subject} />
       </div>

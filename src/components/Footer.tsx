@@ -24,7 +24,11 @@ export default function Footer() {
         <div className="text-sm">
           <p className="font-semibold text-white">Kontakt</p>
           <ul className="mt-3 space-y-2">
-            <li><Link href="/#kontakt" className="hover:text-white">Verfügbarkeit anfragen</Link></li>
+            <li><a href={site.contact.phoneHref} className="hover:text-white">{site.contact.phone}</a></li>
+            <li><a href={`mailto:${site.contact.email}`} className="hover:text-white">{site.contact.email}</a></li>
+            <li>
+              <a href={site.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp</a>
+            </li>
             <li>
               <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a>
             </li>

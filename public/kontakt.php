@@ -1,8 +1,7 @@
 <?php
 // Kontaktformular-Versand für all-inkl (PHP). Wird von src/components/ContactForm.tsx aufgerufen.
 
-// PLATZHALTER: Empfänger-Adresse eintragen
-$to = 'PLATZHALTER@medienproduktionbruchwalski.de';
+$to = 'bruchwalski@medienproduktionbruchwalski.de';
 // Absender muss eine Adresse der eigenen Domain sein (sonst landet die Mail im Spam)
 $from = 'website@medienproduktionbruchwalski.de';
 

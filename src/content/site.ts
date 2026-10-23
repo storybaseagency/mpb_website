@@ -1,5 +1,4 @@
 // Zentrale Inhalte der Website. Texte übernommen von der bisherigen WordPress-Seite.
-// Stellen mit PLATZHALTER müssen noch ergänzt bzw. geprüft werden.
 
 export const site = {
   name: "Medienproduktion Bruchwalski",
@@ -12,11 +11,12 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/jan-b-a4a45a350/",
   contact: {
     person: "Jan Bruchwalski",
-    // PLATZHALTER: Anschrift für Impressum (Pflichtangabe, auf der alten Seite nicht vorhanden)
-    street: "PLATZHALTER Straße 1",
-    city: "PLATZHALTER 10000 Berlin",
-    // PLATZHALTER: E-Mail für Impressum – zusätzlich in public/kontakt.php eintragen
-    email: "PLATZHALTER@medienproduktionbruchwalski.de",
+    street: "Pichelsdorfer Straße 59",
+    city: "13595 Berlin",
+    email: "bruchwalski@medienproduktionbruchwalski.de",
+    phone: "0160 7534434",
+    phoneHref: "tel:+491607534434",
+    whatsapp: "https://wa.me/491607534434?text=" + encodeURIComponent("Hallo Jan, ich habe eine Anfrage zu einer Produktion:"),
   },
 };
 

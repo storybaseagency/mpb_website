@@ -13,7 +13,7 @@ npm run build   # erzeugt den Ordner out/
 ## Inhalte pflegen
 
 Alle Texte, Kundenstimmen, Kontaktdaten und die drei Leistungen stehen in `src/content/site.ts`.
-Stellen mit `PLATZHALTER` müssen noch ergänzt werden (`grep -rn PLATZHALTER src public`).
+Neue Videos, Texte oder Fragen & Antworten werden ebenfalls dort ergänzt.
 Bilder liegen in `public/images/`.
 
 ### Video auf einer Landingpage einsetzen
@@ -39,7 +39,7 @@ Ist das Feld leer, erscheint der Platzhalter „Video folgt in Kürze“.
 ## Kontaktformular
 
 Das Formular schickt die Daten an `public/kontakt.php`, das bei all-inkl per PHP
-eine E-Mail versendet. Dort die Empfängeradresse (`$to`) eintragen. Lokal mit
+eine E-Mail versendet. Lokal mit
 `npm run dev` funktioniert der Versand nicht – nur auf dem Server.
 
 ## Deployment bei all-inkl
