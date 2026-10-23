@@ -1,10 +1,10 @@
 // Google Ads Conversion-Tracking. Leer = kein Tracking, kein Cookie-Banner.
 export const tracking = {
-  googleAdsId: "AW-18306146694",
+  googleAdsId: "AW-18089263240",
   conversions: {
-    form: "wI3UCN7xjKcdEIbDhplE", // Kontaktformular
-    whatsapp: "0IvuCM20iacdEIbDhplE", // Kontakt-Whatsapp
-    phone: "Agu4CPvhgacdEIbDhplE", // Kontakt-Telefon
+    form: "", // Kontaktformular
+    whatsapp: "", // Kontakt-Whatsapp
+    phone: "", // Kontakt-Telefon
   },
 };
 
