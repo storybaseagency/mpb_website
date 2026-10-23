@@ -2,10 +2,10 @@
 ErrorDocument 404 /404.html
 
 RewriteEngine On
-# HTTPS und www erzwingen
+# HTTPS erzwingen, www auf die Hauptadresse ohne www umleiten
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ https://www.medienproduktionbruchwalski.de/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://medienproduktionbruchwalski.de/$1 [R=301,L]
 
 # Frühere URLs auf die neuen Leistungsseiten umleiten
 Redirect 301 /leistungen/videoproduktion/ /videoproduktion-berlin/

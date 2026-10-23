@@ -1,6 +1,6 @@
 // Meldet alle URLs aus der Sitemap per IndexNow an Bing, Yandex & Co.
 // Nach jedem Deployment ausführen: npm run indexnow
-const host = "www.medienproduktionbruchwalski.de";
+const host = "medienproduktionbruchwalski.de";
 const key = "d857b05a245cb34055ad92f6c0a4847f";
 
 const sitemap = await (await fetch(`https://${host}/sitemap.xml`)).text();

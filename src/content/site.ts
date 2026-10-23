@@ -3,7 +3,7 @@
 export const site = {
   name: "Medienproduktion Bruchwalski",
   shortName: "Bruchwalski",
-  url: "https://www.medienproduktionbruchwalski.de",
+  url: "https://medienproduktionbruchwalski.de",
   headline: "Kameramann und Bildmischer in Berlin für professionelle Produktionen",
   homeTitle: "Kameramann & Bildmischer Berlin | Livestream & Bildregie – Medienproduktion Bruchwalski",
   subline: "Kamera, Bildregie und Liveproduktion in Berlin und deutschlandweit.",
