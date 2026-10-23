@@ -4,7 +4,7 @@ export const tracking = {
   conversions: {
     form: "wI3UCN7xjKcdEIbDhplE", // Kontaktformular
     whatsapp: "", // Label „WhatsApp-Klick“
-    phone: "", // Label „Telefon-Klick“
+    phone: "Agu4CPvhgacdEIbDhplE", // Kontakt-Telefon
   },
 };
 
