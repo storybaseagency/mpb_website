@@ -41,6 +41,14 @@ YouTube und Vimeo laden erst nach Klick (Datenschutz).
 | `/referenzen/`, `/ueber-jan-bruchwalski/`, `/faq/` | Vertrauen & Fragen |
 | `/impressum/`, `/datenschutz/` | Pflichtseiten |
 
+## Google Ads
+
+Conversion-Tracking wird in `src/content/tracking.ts` aktiviert (Google-Tag, Conversion-ID und Labels).
+Solange `tagId` leer ist, wird nichts geladen und kein Cookie-Banner angezeigt.
+Mit ID erscheint ein Banner; Google Ads lädt erst nach Einwilligung (Consent Mode v2).
+Gezählt werden: abgeschicktes Formular, Klick auf Telefon, Klick auf WhatsApp.
+Kampagnen-Parameter (`utm_*`, `gclid`) werden unabhängig davon in der Anfrage-Mail mitgeschickt.
+
 ## SEO
 
 Offene Aufgaben außerhalb der Website: `docs/seo-checkliste.md`.

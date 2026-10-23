@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { trackingEnabled } from "@/content/tracking";
 
 export const metadata: Metadata = { title: "Datenschutzerklärung", robots: { index: false } };
 
@@ -36,8 +37,10 @@ export default function Datenschutz() {
 
       <Section title="2. Überblick">
         <p>
-          Diese Website verwendet keine Cookies, keine Analyse- oder Tracking-Dienste und keine
-          Werbe-Pixel. Schriftarten werden lokal von diesem Server ausgeliefert; es besteht dabei
+          {trackingEnabled
+            ? "Diese Website setzt Cookies und Google Ads Conversion-Tracking nur ein, wenn Sie über das Cookie-Banner einwilligen (siehe Ziffer 8). Analyse-Dienste werden nicht verwendet."
+            : "Diese Website verwendet keine Cookies, keine Analyse- oder Tracking-Dienste und keine Werbe-Pixel."}{" "}
+          Schriftarten werden lokal von diesem Server ausgeliefert; es besteht dabei
           keine Verbindung zu Servern von Google oder anderen Drittanbietern. Personenbezogene Daten
           werden nur verarbeitet, soweit dies für den Betrieb der Website oder die Bearbeitung Ihrer
           Anfrage erforderlich ist.
@@ -72,9 +75,12 @@ export default function Datenschutz() {
       <Section title="5. Kontaktformular">
         <p>
           Wenn Sie das Kontaktformular nutzen, werden Ihre Angaben (Name, E-Mail-Adresse, optional
-          Wunschdatum sowie Ihre Nachricht) per E-Mail an mich übermittelt und zur Bearbeitung Ihrer
-          Anfrage verwendet. Die Daten werden über den Mailserver des Hosters versendet und nicht an
-          Dritte weitergegeben.
+          Wunschdatum, wie Sie auf mich aufmerksam geworden sind, sowie Ihre Nachricht) per E-Mail an
+          mich übermittelt und zur Bearbeitung Ihrer Anfrage verwendet. Sind Sie über eine Anzeige oder
+          einen Kampagnenlink auf die Seite gekommen, wird zusätzlich die Kampagnenkennung aus der
+          aufgerufenen Adresse (z. B. „utm_campaign“) mitgeschickt; hierfür werden keine Cookies
+          gesetzt. Die Daten werden über den Mailserver des Hosters versendet und nicht an Dritte
+          weitergegeben.
         </p>
         <p>
           Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit einem Vertrag oder
@@ -126,7 +132,40 @@ export default function Datenschutz() {
         </p>
       </Section>
 
-      <Section title="8. Link zu LinkedIn">
+      {trackingEnabled && (
+        <Section title="8. Google Ads Conversion-Tracking">
+          <p>
+            Ich schalte Anzeigen bei Google Ads und möchte messen, ob sie zu Anfragen führen. Dafür
+            nutze ich – nur mit Ihrer Einwilligung – das Conversion-Tracking der Google Ireland
+            Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“).
+          </p>
+          <p>
+            Haben Sie eingewilligt und sind über eine Google-Anzeige auf diese Website gelangt, setzt
+            Google ein Cookie auf Ihrem Endgerät. Schicken Sie anschließend das Kontaktformular ab oder
+            klicken auf die Telefonnummer bzw. den WhatsApp-Button, erfahren Google und ich, dass eine
+            Anfrage über eine Anzeige zustande kam. Ich erhalte dabei nur statistische Auswertungen,
+            keine Informationen, mit denen Sie persönlich identifiziert werden können. Google
+            verarbeitet unter anderem Ihre IP-Adresse, Geräte- und Browserinformationen, die
+            aufgerufenen Seiten sowie Klick-Kennungen. Eine Übermittlung in die USA ist möglich;
+            Google ist unter dem EU-US Data Privacy Framework zertifiziert. Ich nutze den
+            Einwilligungsmodus von Google (Consent Mode); ohne Ihre Einwilligung wird Google Ads nicht
+            geladen.
+          </p>
+          <p>
+            Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Sie
+            können sie jederzeit mit Wirkung für die Zukunft über „Cookie-Einstellungen“ im Seitenfuß
+            widerrufen. Ihre Entscheidung wird im lokalen Speicher Ihres Browsers abgelegt, damit das
+            Banner nicht bei jedem Seitenaufruf erscheint (§ 25 Abs. 2 Nr. 2 TDDDG). Weitere
+            Informationen:{" "}
+            <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noopener noreferrer">
+              Datenschutzerklärung von Google
+            </a>
+            .
+          </p>
+        </Section>
+      )}
+
+      <Section title={`${trackingEnabled ? 9 : 8}. Link zu LinkedIn`}>
         <p>
           Diese Website enthält einen einfachen Link zu meinem LinkedIn-Profil. Es handelt sich nicht
           um ein eingebundenes Plugin; Daten werden erst übertragen, wenn Sie den Link anklicken und
@@ -135,7 +174,7 @@ export default function Datenschutz() {
         </p>
       </Section>
 
-      <Section title="9. Ihre Rechte">
+      <Section title={`${trackingEnabled ? 10 : 9}. Ihre Rechte`}>
         <p>Sie haben im Rahmen der gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
         <ul className="list-disc space-y-1 pl-5">
           <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
@@ -161,7 +200,7 @@ export default function Datenschutz() {
         </p>
       </Section>
 
-      <Section title="10. Änderungen">
+      <Section title={`${trackingEnabled ? 11 : 10}. Änderungen`}>
         <p>
           Ich passe diese Datenschutzerklärung an, sobald sich die Website oder die rechtlichen
           Rahmenbedingungen ändern. Es gilt die jeweils aktuelle, hier veröffentlichte Fassung.
