@@ -1,6 +1,6 @@
 // Google Ads Conversion-Tracking. Leer = kein Tracking, kein Cookie-Banner.
 export const tracking = {
-  googleAdsId: "", // z. B. "AW-123456789"
+  googleAdsId: "AW-18306146694",
   conversions: {
     form: "", // Label der Conversion-Aktion „Kontaktformular“
     whatsapp: "", // Label „WhatsApp-Klick“
