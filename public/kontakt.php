@@ -2,8 +2,9 @@
 // Kontaktformular-Versand für all-inkl (PHP). Wird von src/components/ContactForm.tsx aufgerufen.
 
 $to = 'bruchwalski@medienproduktionbruchwalski.de';
-// Absender muss eine Adresse der eigenen Domain sein (sonst landet die Mail im Spam)
-$from = 'website@medienproduktionbruchwalski.de';
+// Absender muss ein existierendes Postfach der eigenen Domain sein,
+// sonst verwirft der Mailserver die Nachricht.
+$from = 'bruchwalski@medienproduktionbruchwalski.de';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -35,8 +36,10 @@ if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMA
 
 $subject = '=?UTF-8?B?' . base64_encode("Website-Anfrage: $betreff") . '?=';
 $body = "Name: $name\nE-Mail: $email\nWunschdatum: " . ($datum ?: '-') . "\nLeistung: $betreff\nGefunden über: " . ($quelle ?: '-') . "\n\n$nachricht\n";
-$headers = "From: $from\r\nReply-To: $email\r\nContent-Type: text/plain; charset=UTF-8\r\n";
+$fromName = '=?UTF-8?B?' . base64_encode('Website Medienproduktion Bruchwalski') . '?=';
+$headers = "From: $fromName <$from>\r\nReply-To: $email\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: 8bit\r\n";
 
-$ok = mail($to, $subject, $body, $headers);
+// -f setzt den Envelope-Absender (Return-Path), wichtig für die Zustellung
+$ok = mail($to, $subject, $body, $headers, '-f' . $from);
 http_response_code($ok ? 200 : 500);
 echo json_encode(['ok' => $ok]);
