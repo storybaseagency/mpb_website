@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { campaignFromUrl, trackConversion } from "@/lib/tracking";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -16,13 +15,9 @@ export default function ContactForm({ subject }: { subject?: string }) {
     e.preventDefault();
     setStatus("sending");
     try {
-      const body = new FormData(e.currentTarget);
-      body.set("kampagne", campaignFromUrl());
-      const res = await fetch("/kontakt.php", { method: "POST", body });
+      const res = await fetch("/kontakt.php", { method: "POST", body: new FormData(e.currentTarget) });
       const data = await res.json();
-      const ok = res.ok && data.ok;
-      if (ok) trackConversion("form");
-      setStatus(ok ? "sent" : "error");
+      setStatus(res.ok && data.ok ? "sent" : "error");
     } catch {
       setStatus("error");
     }

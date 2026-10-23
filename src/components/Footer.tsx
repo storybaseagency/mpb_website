@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import ConsentSettingsLink from "@/components/ConsentSettingsLink";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 
@@ -52,7 +51,6 @@ export default function Footer() {
             <Link href="/faq/" className="hover:text-white">FAQ</Link>
             <Link href="/impressum/" className="hover:text-white">Impressum</Link>
             <Link href="/datenschutz/" className="hover:text-white">Datenschutz</Link>
-            <ConsentSettingsLink />
           </div>
         </div>
       </div>

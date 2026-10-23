@@ -28,7 +28,6 @@ $email = $clean($_POST['email'] ?? '');
 $datum = $clean($_POST['datum'] ?? '');
 $betreff = $clean($_POST['betreff'] ?? 'Anfrage');
 $quelle = $clean($_POST['quelle'] ?? '');
-$kampagne = $clean($_POST['kampagne'] ?? '');
 $nachricht = trim((string)($_POST['nachricht'] ?? ''));
 
 if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($_POST['datenschutz'])) {
@@ -38,7 +37,7 @@ if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMA
 }
 
 $subject = "Website-Anfrage: $betreff";
-$body = "Name: $name\nE-Mail: $email\nWunschdatum: " . ($datum ?: '-') . "\nLeistung: $betreff\nGefunden über: " . ($quelle ?: '-') . ($kampagne ? "\nKampagne: $kampagne" : '') . "\n\n$nachricht\n";
+$body = "Name: $name\nE-Mail: $email\nWunschdatum: " . ($datum ?: '-') . "\nLeistung: $betreff\nGefunden über: " . ($quelle ?: '-') . "\n\n$nachricht\n";
 
 $encode = fn($s) => '=?UTF-8?B?' . base64_encode($s) . '?=';
 $headers = [
