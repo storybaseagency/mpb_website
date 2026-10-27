@@ -1,0 +1,2 @@
+# Versteckte Seite: nicht in Suchmaschinen aufnehmen
+Header set X-Robots-Tag "noindex, nofollow"

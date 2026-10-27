@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ffe9a8">
+<title>Tier-Tastatur</title>
+<style>
+  :root {
+    --bg: #fff6d6;
+    --key: #ffffff;
+    --key-shadow: #e0c98a;
+    --ink: #3b2f1e;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: var(--bg); color: var(--ink);
+    font-family: "Trebuchet MS", "Comic Sans MS", system-ui, sans-serif;
+    user-select: none; -webkit-user-select: none; touch-action: manipulation;
+  }
+  body { display: flex; flex-direction: column; }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; gap: 12px;
+  }
+  h1 { margin: 0; font-size: clamp(20px, 4vw, 34px); letter-spacing: .5px; }
+  h1 span { display: inline-block; animation: wiggle 3s ease-in-out infinite; }
+  .tools { display: flex; gap: 8px; }
+  .tools button {
+    font: inherit; font-size: 15px; border: 0; border-radius: 999px;
+    padding: 10px 16px; background: #fff; color: var(--ink);
+    box-shadow: 0 3px 0 var(--key-shadow); cursor: pointer;
+  }
+
+  .board {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    gap: clamp(6px, 1.2vw, 12px); padding: 8px clamp(8px, 2vw, 24px) 24px;
+  }
+  .row { display: flex; justify-content: center; gap: clamp(4px, 1vw, 12px); }
+  .key {
+    flex: 0 1 clamp(28px, 9vw, 110px); aspect-ratio: 1 / 1.05;
+    border: 0; border-radius: clamp(8px, 1.6vw, 20px); cursor: pointer;
+    background: var(--key); color: var(--ink);
+    box-shadow: 0 clamp(3px, .6vw, 7px) 0 var(--c, var(--key-shadow));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font: inherit; font-weight: 700; font-size: clamp(14px, 3.4vw, 40px);
+    transition: transform .08s;
+    padding: 0;
+  }
+  .key small { font-size: .7em; line-height: 1; margin-top: 2px; }
+  .key:active, .key.down { transform: translateY(4px); box-shadow: 0 1px 0 var(--c, var(--key-shadow)); }
+  .row.space .key { flex-basis: min(60vw, 600px); aspect-ratio: auto; height: clamp(40px, 7vw, 80px); }
+
+  /* Vollbild-Tier */
+  .stage {
+    position: fixed; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2vh;
+    background: var(--c, #ffd36e); opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  .stage.show { opacity: 1; pointer-events: auto; }
+  .stage .emoji {
+    font-size: min(58vh, 70vw); line-height: 1;
+    filter: drop-shadow(0 2vh 2vh rgba(0,0,0,.18));
+  }
+  .stage.show .emoji { animation: pop .6s cubic-bezier(.2,1.6,.4,1), bob 1.2s ease-in-out .6s infinite; }
+  .stage .name {
+    font-size: min(9vh, 12vw); font-weight: 800; color: #fff;
+    text-shadow: 0 4px 0 rgba(0,0,0,.18);
+  }
+  .stage .name b { font-size: 1.3em; }
+  .stage .sound { font-size: min(5vh, 7vw); color: rgba(255,255,255,.95); font-style: italic; }
+
+  @keyframes pop { from { transform: scale(.2) rotate(-20deg); } to { transform: scale(1) rotate(0); } }
+  @keyframes bob { 50% { transform: translateY(-3vh) rotate(3deg); } }
+  @keyframes wiggle { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+
+  @media (max-height: 520px) { header { padding: 6px 12px; } .tools button { padding: 6px 12px; } }
+</style>
+</head>
+<body>
+  <header>
+    <h1><span>🐾</span> Tier-Tastatur</h1>
+    <div class="tools">
+      <button id="fullscreen" type="button">⛶ Vollbild</button>
+    </div>
+  </header>
+
+  <main class="board" id="board"></main>
+
+  <div class="stage" id="stage" aria-live="polite">
+    <div class="emoji" id="stage-emoji"></div>
+    <div class="name" id="stage-name"></div>
+    <div class="sound" id="stage-sound"></div>
+  </div>
+
+<script>
+// Pro Buchstabe ein oder mehrere Tiere (bei mehreren wird zufällig gewählt).
+// sound: wird angezeigt und von der Sprachausgabe gesprochen, falls keine MP3 hinterlegt ist.
+// pitch: Stimmhöhe der Sprachausgabe (0.1 tief – 2 hoch).
+const ANIMALS = {
+  A: [{ id: "affe",      name: "Affe",       emoji: "🐒", sound: "U-u-a-a-a!",       pitch: 1.6, color: "#f4a261" }],
+  B: [{ id: "baer",      name: "Bär",        emoji: "🐻", sound: "Brumm, brumm!",    pitch: 0.3, color: "#a47148" },
+      { id: "biene",     name: "Biene",      emoji: "🐝", sound: "Summ, summ, summ!",pitch: 1.4, color: "#f6c344" }],
+  C: [{ id: "chamaeleon",name: "Chamäleon",  emoji: "🦎", sound: "Zisch!",           pitch: 1.2, color: "#7cc35b" }],
+  D: [{ id: "delfin",    name: "Delfin",     emoji: "🐬", sound: "Ki-ki-ki-ki!",     pitch: 2.0, color: "#3fa7d6" }],
+  E: [{ id: "elefant",   name: "Elefant",    emoji: "🐘", sound: "Törööö!",          pitch: 0.5, color: "#8d99ae" },
+      { id: "esel",      name: "Esel",       emoji: "🫏", sound: "I-aah, i-aah!",    pitch: 1.0, color: "#9c8f80" }],
+  F: [{ id: "frosch",    name: "Frosch",     emoji: "🐸", sound: "Quak, quak!",      pitch: 1.1, color: "#58b85c" }],
+  G: [{ id: "gorilla",   name: "Gorilla",    emoji: "🦍", sound: "Uh, uh, uh!",      pitch: 0.3, color: "#6d6875" },
+      { id: "gans",      name: "Gans",       emoji: "🪿", sound: "Schnatter, schnatter!", pitch: 1.3, color: "#90c2e7" }],
+  H: [{ id: "hund",      name: "Hund",       emoji: "🐶", sound: "Wau, wau!",        pitch: 1.0, color: "#e09f3e" },
+      { id: "huhn",      name: "Huhn",       emoji: "🐔", sound: "Gack, gack, gack!",pitch: 1.6, color: "#e76f51" }],
+  I: [{ id: "igel",      name: "Igel",       emoji: "🦔", sound: "Schnüff, schnüff!",pitch: 1.5, color: "#b5838d" }],
+  J: [{ id: "jaguar",    name: "Jaguar",     emoji: "🐆", sound: "Grrrrr!",          pitch: 0.5, color: "#e9a03b" }],
+  K: [{ id: "kuh",       name: "Kuh",        emoji: "🐮", sound: "Muuuuh!",          pitch: 0.6, color: "#6ab04c" },
+      { id: "katze",     name: "Katze",      emoji: "🐱", sound: "Miau!",            pitch: 1.7, color: "#f78fb3" }],
+  L: [{ id: "loewe",     name: "Löwe",       emoji: "🦁", sound: "Roaaarrr!",        pitch: 0.4, color: "#f0a500" }],
+  M: [{ id: "maus",      name: "Maus",       emoji: "🐭", sound: "Piep, piep, piep!",pitch: 2.0, color: "#c39bd3" }],
+  N: [{ id: "nashorn",   name: "Nashorn",    emoji: "🦏", sound: "Schnauuuf!",       pitch: 0.4, color: "#95a5a6" }],
+  O: [{ id: "orang-utan",name: "Orang-Utan", emoji: "🦧", sound: "Uuh, uuh, aah!",   pitch: 0.8, color: "#d35400" }],
+  P: [{ id: "pferd",     name: "Pferd",      emoji: "🐴", sound: "Wiiiehehehe!",     pitch: 1.4, color: "#c07a4a" },
+      { id: "pinguin",   name: "Pinguin",    emoji: "🐧", sound: "Kräh, kräh!",      pitch: 1.3, color: "#4a90c2" }],
+  Q: [{ id: "qualle",    name: "Qualle",     emoji: "🪼", sound: "Blubb, blubb!",    pitch: 1.6, color: "#9b7fd4" }],
+  R: [{ id: "robbe",     name: "Robbe",      emoji: "🦭", sound: "Ö-ö-ö-ö!",         pitch: 0.9, color: "#5d8aa8" }],
+  S: [{ id: "schaf",     name: "Schaf",      emoji: "🐑", sound: "Määäh!",           pitch: 1.3, color: "#8fc1a9" },
+      { id: "schwein",   name: "Schwein",    emoji: "🐷", sound: "Grunz, grunz!",    pitch: 0.8, color: "#f497b6" }],
+  T: [{ id: "tiger",     name: "Tiger",      emoji: "🐯", sound: "Grrroaaar!",       pitch: 0.4, color: "#ee8434" }],
+  U: [{ id: "uhu",       name: "Uhu",        emoji: "🦉", sound: "Uhuu, uhuu!",      pitch: 0.7, color: "#7d5a50" }],
+  V: [{ id: "vogel",     name: "Vogel",      emoji: "🐦", sound: "Tschilp, tschilp!",pitch: 2.0, color: "#48b5e0" }],
+  W: [{ id: "wolf",      name: "Wolf",       emoji: "🐺", sound: "Auuuuuuu!",        pitch: 0.7, color: "#5c6b8a" },
+      { id: "wal",       name: "Wal",        emoji: "🐳", sound: "Wuuuuuuuh!",       pitch: 0.2, color: "#2e86de" }],
+  X: [{ id: "xerus",     name: "Xerus",      emoji: "🐿️", sound: "Tschick, tschick!",pitch: 1.8, color: "#c8875e" }],
+  Y: [{ id: "yak",       name: "Yak",        emoji: "🐃", sound: "Mmmuuuh!",         pitch: 0.3, color: "#8e7d6a" }],
+  Z: [{ id: "zebra",     name: "Zebra",      emoji: "🦓", sound: "Hi-hi-haa!",       pitch: 1.2, color: "#555b6e" },
+      { id: "ziege",     name: "Ziege",      emoji: "🐐", sound: "Mäck-mäck-mäck!",  pitch: 1.5, color: "#a3b18a" }],
+};
+
+const ROWS = ["QWERTZUIOP", "ASDFGHJKL", "YXCVBNM"];
+const SHOW_MS = 1800;
+
+const board = document.getElementById("board");
+const stage = document.getElementById("stage");
+const stageEmoji = document.getElementById("stage-emoji");
+const stageName = document.getElementById("stage-name");
+const stageSound = document.getElementById("stage-sound");
+const keyButtons = {};
+
+// --- Tastatur aufbauen ---
+for (const row of ROWS) {
+  const rowEl = document.createElement("div");
+  rowEl.className = "row";
+  for (const letter of row) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "key";
+    btn.style.setProperty("--c", ANIMALS[letter][0].color);
+    btn.innerHTML = `${letter}<small>${ANIMALS[letter][0].emoji}</small>`;
+    btn.addEventListener("pointerdown", (e) => { e.preventDefault(); play(letter); });
+    keyButtons[letter] = btn;
+    rowEl.appendChild(btn);
+  }
+  board.appendChild(rowEl);
+}
+const spaceRow = document.createElement("div");
+spaceRow.className = "row space";
+const spaceBtn = document.createElement("button");
+spaceBtn.type = "button";
+spaceBtn.className = "key";
+spaceBtn.innerHTML = "🎲";
+spaceBtn.addEventListener("pointerdown", (e) => { e.preventDefault(); play(randomLetter()); });
+spaceRow.appendChild(spaceBtn);
+board.appendChild(spaceRow);
+
+// --- Echte Geräusche (optional) vorladen ---
+// IDs von Tieren, für die eine Datei sounds/<id>.mp3 hochgeladen wurde, z. B. ["pferd", "kuh"].
+// Alle anderen Tiere nutzen die Sprachausgabe.
+const SOUND_FILES = [];
+const audio = {};
+for (const list of Object.values(ANIMALS)) {
+  for (const a of list) {
+    if (!SOUND_FILES.includes(a.id)) continue;
+    const el = new Audio(`sounds/${a.id}.mp3`);
+    el.preload = "auto";
+    el.addEventListener("canplaythrough", () => { audio[a.id] = el; }, { once: true });
+  }
+}
+
+// --- Sprachausgabe als Fallback ---
+let voice = null;
+function pickVoice() {
+  const voices = speechSynthesis.getVoices().filter((v) => v.lang && v.lang.startsWith("de"));
+  voice = voices.find((v) => /google|anna|petra|helena|katja/i.test(v.name)) || voices[0] || null;
+}
+if ("speechSynthesis" in window) {
+  pickVoice();
+  speechSynthesis.addEventListener?.("voiceschanged", pickVoice);
+}
+
+function speak(text, pitch) {
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "de-DE";
+  if (voice) u.voice = voice;
+  u.pitch = pitch;
+  u.rate = 0.95;
+  speechSynthesis.speak(u);
+}
+
+let current = null;
+function stopSound() {
+  if (current) { current.pause(); current.currentTime = 0; current = null; }
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+}
+
+// --- Tier zeigen ---
+let hideTimer = null;
+function randomLetter() {
+  const letters = Object.keys(ANIMALS);
+  return letters[Math.floor(Math.random() * letters.length)];
+}
+
+function play(letter) {
+  const list = ANIMALS[letter];
+  if (!list) return;
+  const a = list[Math.floor(Math.random() * list.length)];
+
+  stage.style.setProperty("--c", a.color);
+  stageEmoji.textContent = a.emoji;
+  stageName.innerHTML = `<b>${letter}</b> wie ${a.name}`;
+  stageSound.textContent = a.sound;
+
+  // Animation neu starten, auch wenn schon ein Tier zu sehen ist
+  stage.classList.remove("show");
+  void stage.offsetWidth;
+  stage.classList.add("show");
+
+  stopSound();
+  if (audio[a.id]) {
+    current = audio[a.id];
+    current.play().catch(() => speak(`${a.name}! ${a.sound}`, a.pitch));
+  } else {
+    speak(`${a.name}! ${a.sound}`, a.pitch);
+  }
+
+  const btn = keyButtons[letter];
+  if (btn) { btn.classList.add("down"); setTimeout(() => btn.classList.remove("down"), 150); }
+
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(() => stage.classList.remove("show"), SHOW_MS);
+}
+
+// --- Physische Tastatur ---
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  e.preventDefault();
+  if (e.repeat) return;
+  const k = e.key.toUpperCase();
+  if (ANIMALS[k]) play(k);
+  else if (k.length === 1 || k === " " || k === "ENTER") play(randomLetter());
+});
+
+// Tippen auf das Tier blendet es sofort aus
+stage.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+  clearTimeout(hideTimer);
+  stage.classList.remove("show");
+});
+
+// Kein Kontextmenü / Zoom durch wildes Tippen
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("gesturestart", (e) => e.preventDefault());
+
+// --- Vollbild ---
+const fsBtn = document.getElementById("fullscreen");
+const root = document.documentElement;
+if (!root.requestFullscreen && !root.webkitRequestFullscreen) fsBtn.hidden = true;
+fsBtn.addEventListener("click", () => {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  } else {
+    (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+  }
+});
+</script>
+</body>
+</html>
