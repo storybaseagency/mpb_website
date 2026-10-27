@@ -79,6 +79,11 @@
   @keyframes bob { 50% { transform: translateY(-3vh) rotate(3deg); } }
   @keyframes wiggle { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
 
+  .credits {
+    position: fixed; right: 10px; bottom: 6px; font-size: 12px;
+    color: var(--ink); opacity: .45; text-decoration: none;
+  }
+
   @media (max-height: 520px) { header { padding: 6px 12px; } .tools button { padding: 6px 12px; } }
 </style>
 </head>
@@ -91,6 +96,8 @@
   </header>
 
   <main class="board" id="board"></main>
+
+  <a class="credits" href="quellen.html">Quellen</a>
 
   <div class="stage" id="stage" aria-live="polite">
     <div class="emoji" id="stage-emoji"></div>
@@ -179,7 +186,7 @@ board.appendChild(spaceRow);
 // --- Echte Geräusche (optional) vorladen ---
 // IDs von Tieren, für die eine Datei sounds/<id>.mp3 hochgeladen wurde, z. B. ["pferd", "kuh"].
 // Alle anderen Tiere nutzen die Sprachausgabe.
-const SOUND_FILES = [];
+const SOUND_FILES = ["affe", "biene", "delfin", "elefant", "esel", "gans", "hund", "huhn", "katze", "kuh", "loewe", "pferd", "schaf", "schwein", "tiger", "wal", "wolf", "zebra", "ziege"];
 const audio = {};
 for (const list of Object.values(ANIMALS)) {
   for (const a of list) {
