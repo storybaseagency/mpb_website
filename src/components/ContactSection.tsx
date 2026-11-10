@@ -18,7 +18,7 @@ export default function ContactSection({
           <p className="text-sm uppercase tracking-[0.2em] text-accent">Kontakt</p>
           <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">{title}</h2>
           <p className="mt-4 text-stone-300">
-            Schicken Sie mir Ihr Wunschdatum und ein paar Eckdaten zur Produktion – ich melde mich zeitnah.
+            Schicken Sie mir Ihr Wunschdatum und ein paar Eckdaten zur Produktion. Ich melde mich zeitnah.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a

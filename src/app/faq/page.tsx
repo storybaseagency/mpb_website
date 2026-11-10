@@ -28,7 +28,7 @@ export default function FaqPage() {
             Häufige Fragen zu Livestream, Bildregie und Kamera
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-stone-300">
-            Kosten, Technik und Ablauf – kurz beantwortet. Ihre Frage ist nicht dabei? Schreiben Sie mir einfach.
+            Kurze Antworten zu Kosten, Technik und Ablauf. Wenn Ihre Frage fehlt, schreiben Sie mir.
           </p>
         </div>
       </section>

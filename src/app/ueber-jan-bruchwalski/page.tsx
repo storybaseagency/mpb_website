@@ -12,7 +12,7 @@ import { breadcrumbSchema, personSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Über Jan Bruchwalski – Kameramann & Bildmischer Berlin",
   description:
-    "Jan Bruchwalski ist Mediengestalter mit 20 Jahren Erfahrung in der Bewegtbildproduktion – Kameramann, Bildmischer und Livestream-Techniker aus Berlin-Spandau.",
+    "Jan Bruchwalski ist Mediengestalter mit 20 Jahren Erfahrung in der Bewegtbildproduktion. Kameramann, Bildmischer und Livestream-Techniker aus Berlin-Spandau.",
   alternates: { canonical: "/ueber-jan-bruchwalski/" },
 };
 
@@ -30,7 +30,7 @@ export default function About() {
             <div>
               <p className="text-sm uppercase tracking-[0.2em] text-accent">Über mich</p>
               <h1 className="font-display mt-4 text-4xl font-semibold leading-tight sm:text-5xl">
-                Jan Bruchwalski – Kameramann und Bildmischer aus Berlin
+                Jan Bruchwalski, Kameramann und Bildmischer aus Berlin
               </h1>
               <p className="mt-6 text-lg text-stone-300">{about.intro}</p>
             </div>
@@ -52,7 +52,7 @@ export default function About() {
         <ul className="mt-5 space-y-3">
           {services.map((s) => (
             <li key={s.slug}>
-              <Link href={`/${s.slug}/`} className="font-medium hover:text-accent">{s.h1.split(" – ")[0]}</Link>
+              <Link href={`/${s.slug}/`} className="font-medium hover:text-accent">{s.title} in Berlin</Link>
               <p className="text-sm text-muted">{s.teaser}</p>
             </li>
           ))}

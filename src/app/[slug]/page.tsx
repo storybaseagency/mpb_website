@@ -187,7 +187,7 @@ export default async function ServicePage({ params }: PageProps<"/[slug]">) {
                 href={`/${r.slug}/`}
                 className="rounded-full border border-border bg-background px-5 py-3 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                {r.h1.split(" – ")[0]} →
+                {r.title} in Berlin →
               </Link>
             ))}
           </div>

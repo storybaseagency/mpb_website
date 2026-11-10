@@ -38,7 +38,7 @@ export const personSchema = {
   name: site.contact.person,
   jobTitle: ["Kameramann", "Bildmischer", "Mediengestalter"],
   description:
-    "Mediengestalter mit 20 Jahren Erfahrung in der Bewegtbildproduktion – Kamera, Bildregie und Liveproduktion in Berlin.",
+    "Mediengestalter mit 20 Jahren Erfahrung in der Bewegtbildproduktion. Kamera, Bildregie und Liveproduktion in Berlin.",
   image: url("/images/jan-bruchwalski.webp"),
   url: url("/ueber-jan-bruchwalski/"),
   worksFor: { "@id": businessId },

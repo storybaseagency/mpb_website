@@ -60,7 +60,7 @@ export default function Home() {
             <h2 className="font-display mt-3 text-3xl font-semibold sm:text-4xl">Video, Bildregie & Liveproduktion in Berlin</h2>
             <p className="mt-4 text-muted">
               Agenturen, Eventtechnik-Firmen und Veranstalter buchen mich als Bildmischer, Kameramann und
-              Livestream-Techniker – einzeln oder für die komplette Produktion.
+              Livestream-Techniker, einzeln oder für die komplette Produktion.
             </p>
           </div>
           <div className="mt-12">
@@ -84,7 +84,7 @@ export default function Home() {
           <div className="rounded-2xl border border-border bg-surface p-6">
             <p className="text-sm font-semibold">Einsatzgebiet</p>
             <p className="mt-1 text-muted">
-              Standort Berlin-Spandau – im Einsatz in ganz Berlin, in Potsdam und Brandenburg sowie deutschlandweit.
+              Mein Standort ist Berlin-Spandau. Ich arbeite in ganz Berlin, in Potsdam und Brandenburg sowie deutschlandweit.
             </p>
           </div>
         </div>
