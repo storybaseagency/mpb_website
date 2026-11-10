@@ -33,11 +33,11 @@ SEO-/GEO-Plan lassen sich nur in externen Konten erledigen.
 - [ ] Bing Places, Apple Business Connect
 - [ ] Crew United, Gelbe Seiten, Das Örtliche, 11880, Berliner Branchen, Cylex, LinkedIn-Unternehmensseite
 - [ ] Profile als `sameAs` in `src/lib/schema.ts` ergänzen
-- [ ] Showreel auf YouTube hochladen und auf Startseite/Leistungsseiten einbinden (`video` in `src/content/services.ts`)
+- [ ] Showreel auf YouTube hochladen und auf Startseite/Leistungsseiten einbinden (im CMS unter /admin/ → Leistungsseite → Video)
 
 ## Offen – Monat 2–3
 
-- [ ] Drei Projektberichte (z. B. Ministergärten) in `caseStudies` in `src/content/site.ts` eintragen
+- [ ] Drei Projektberichte (z. B. Ministergärten) im CMS unter /admin/ → Weitere Inhalte → Referenzen eintragen
 - [ ] Preisrahmen oder Pakete ergänzen (FAQ „Was kostet …?“)
 - [ ] Kunden um Nennung/Verlinkung auf ihrer Website bitten
 
