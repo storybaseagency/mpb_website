@@ -1,0 +1,100 @@
+{
+  "order": 5,
+  "slug": "videoproduktion-berlin",
+  "title": "Videoproduktion",
+  "metaTitle": "Videoproduktion Berlin – Dreh & Schnitt aus einer Hand",
+  "metaDescription": "Videoproduktion in Berlin von der Idee bis zum fertigen Film: Unternehmensvideos, Eventfilme und Interviews. Kamera und Schnitt aus einer Hand.",
+  "h1": "Videoproduktion in Berlin, von der Idee bis zum fertigen Film",
+  "teaser": "Von der Idee bis zum fertigen Film. Professionelle Videoproduktion für Unternehmen, Events und digitale Formate.",
+  "image": "/images/dreharbeiten-hafen.webp",
+  "imageAlt": "Dreharbeiten für eine Videoproduktion am Hafen",
+  "answer": "Ich produziere Videos für Unternehmen, Events und digitale Formate, von der Idee über den Dreh bis zum fertigen Schnitt. Weil Kamera und Schnitt aus einer Hand kommen, haben Sie einen Ansprechpartner für das ganze Projekt. Mein Standort ist Berlin, gedreht wird in Berlin, Brandenburg und deutschlandweit.",
+  "video": "",
+  "highlights": [
+    {
+      "title": "Kamera & Schnitt",
+      "text": "Dreh und Postproduktion aus einer Hand, mit einem Ansprechpartner für das ganze Projekt."
+    },
+    {
+      "title": "Für jedes Format",
+      "text": "Unternehmensvideos, Eventfilme, Interviews und Clips für digitale Kanäle."
+    },
+    {
+      "title": "Berlin & deutschlandweit",
+      "text": "Im Studio, auf der Veranstaltung oder unterwegs."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Welche Videos ich produziere",
+      "paragraphs": [
+        "Ich drehe vor allem Formate, bei denen Kamera und Technik sitzen müssen: Videos für die Website, Eventfilme und Aufzeichnungen von Veranstaltungen."
+      ],
+      "bullets": [
+        "Unternehmens- und Imagevideos",
+        "Eventfilme und Aftermovies",
+        "Interviews und Statements",
+        "Aufzeichnungen von Vorträgen und Konferenzen",
+        "Clips für Social Media und digitale Kanäle"
+      ]
+    },
+    {
+      "heading": "Von der Idee bis zum fertigen Film",
+      "paragraphs": [
+        "Am Anfang steht ein Gespräch über Ziel, Zielgruppe und Einsatzort des Videos. Daraus entsteht ein Ablauf für den Dreh. Ich übernehme die Kameraarbeit und den Schnitt, stimme den Rohschnitt mit Ihnen ab und liefere das fertige Video in den gewünschten Formaten.",
+        "Weil Dreh und Schnitt in einer Hand liegen, müssen Sie nichts zwischen verschiedenen Dienstleistern abstimmen."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Anfrage & Abstimmung",
+      "text": "Wir klären Ziel, Umfang, Termin und Drehort."
+    },
+    {
+      "title": "Dreh",
+      "text": "Kameraarbeit vor Ort mit passendem Equipment."
+    },
+    {
+      "title": "Schnitt & Übergabe",
+      "text": "Schnitt, Feedbackrunde und Auslieferung im gewünschten Format."
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/kameraarbeit-see.webp",
+      "alt": "Kameraarbeit auf See bei Sonnenuntergang"
+    },
+    {
+      "src": "/images/kameraarbeit-unterwegs.webp",
+      "alt": "Dreh unterwegs zwischen Palmen"
+    },
+    {
+      "src": "/images/kamera-talk.webp",
+      "alt": "Kamera bei einer Talk-Aufzeichnung"
+    }
+  ],
+  "testimonials": [
+    "Lea Schermer"
+  ],
+  "faq": [
+    {
+      "q": "Was kostet eine Videoproduktion?",
+      "a": "Das hängt von Umfang, Drehtagen und Schnittaufwand ab. Nach einem kurzen Gespräch bekommen Sie ein Angebot."
+    },
+    {
+      "q": "Wie lange dauert eine Videoproduktion?",
+      "a": "Das hängt vom Umfang ab. Den Zeitplan für Dreh, Feedbackrunde und Auslieferung stimmen wir zu Projektbeginn gemeinsam ab."
+    },
+    {
+      "q": "Sind Sie auch außerhalb von Berlin buchbar?",
+      "a": "Ja, ich arbeite in Berlin, Brandenburg und deutschlandweit."
+    }
+  ],
+  "related": [
+    "kameramann-berlin",
+    "livestream-produktion-berlin",
+    "bildregie-bildmischer-berlin"
+  ],
+  "cta": "Videoprojekt anfragen"
+}

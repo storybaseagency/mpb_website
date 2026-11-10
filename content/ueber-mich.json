@@ -1,0 +1,20 @@
+{
+  "title": "Über mich",
+  "intro": "Hey, ich bin Jan. Mediengestalter mit 20 Jahren Erfahrung in unterschiedlichen Bereichen der Bewegtbildproduktion.",
+  "paragraphs": [
+    "Ob hinter der Kamera, in der Bildregie oder bei der technischen Umsetzung: Ich unterstütze Produktionen dort, wo Erfahrung, ein gutes Auge und technisches Verständnis gefragt sind.",
+    "Von Videoproduktionen und Aufzeichnungen bis hin zu Live-Events und Livestreams: Mir ist wichtig, dass Technik und Gestaltung zusammenspielen und am Ende eine Produktion entsteht, die professionell aussieht und zuverlässig funktioniert."
+  ],
+  "motivation": "Mich begeistert, wenn aus Technik, Timing und einem guten Gespür für Bilder eine Produktion entsteht, die einfach funktioniert. Ob hinter der Kamera oder in der Bildregie – ich arbeite konzentriert und lösungsorientiert.",
+  "image": "/images/jan-bruchwalski.webp",
+  "gear": [
+    {
+      "title": "Bildregie",
+      "text": "vMix, mimoLive, OBS, ATEM"
+    },
+    {
+      "title": "Kamera",
+      "text": "Blackmagic, Sony, RED"
+    }
+  ]
+}

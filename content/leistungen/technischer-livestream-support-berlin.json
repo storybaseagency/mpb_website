@@ -1,0 +1,113 @@
+{
+  "order": 3,
+  "slug": "technischer-livestream-support-berlin",
+  "title": "Technischer Livestream-Support",
+  "metaTitle": "Technischer Livestream-Support Berlin – Techniker buchen",
+  "metaDescription": "Technischer Support für Livestreams und Videoproduktionen in Berlin: Streaming-Techniker, Bildmischer oder Kameramann als Verstärkung für Ihr Team.",
+  "h1": "Technischer Support für Livestreams und Videoproduktionen in Berlin",
+  "teaser": "Technische Unterstützung für Video- und Liveproduktionen. Zuverlässig, flexibel und passend zu bestehenden Workflows.",
+  "image": "/images/setup-ministergaerten.webp",
+  "imageAlt": "Technisches Setup mit Kameras und Regieplatz in einem Konferenzsaal",
+  "answer": "Beim technischen Livestream-Support steige ich als Verstärkung in Ihre Produktion ein, als Streaming-Techniker, Bildmischer oder Kameramann. Agenturen, Eventtechnik-Firmen und Veranstalter in Berlin buchen mich, wenn ein Projekt zusätzliche Hände braucht oder jemand ein bestehendes Setup betreuen soll. Ich arbeite mit Ihrer Technik und Ihren Abläufen.",
+  "video": "",
+  "highlights": [
+    {
+      "title": "Flexibel einsetzbar",
+      "text": "Am Streaming-Rechner, am Bildmischer oder an der Kamera, dort, wo Sie Verstärkung brauchen."
+    },
+    {
+      "title": "Passt in Ihren Workflow",
+      "text": "Ich arbeite mit Ihrer bestehenden Technik und Ihren Abläufen."
+    },
+    {
+      "title": "Schnell eingearbeitet",
+      "text": "20 Jahre in Kamera, Bildregie und Technik. Die gängigen Systeme kenne ich."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Für wen der technische Support gedacht ist",
+      "paragraphs": [
+        "Viele Produktionen haben das Equipment, aber nicht immer das Personal. Ich unterstütze Teams, die für einzelne Tage oder ganze Veranstaltungsreihen einen erfahrenen Techniker brauchen, der sich schnell einarbeitet und eigenständig arbeitet."
+      ],
+      "bullets": [
+        "Eventtechnik-Firmen und Verleiher, die Personal für ihr Equipment benötigen",
+        "Agenturen, die Livestreams für ihre Kunden umsetzen",
+        "Unternehmen und Institutionen mit eigenem Streaming-Setup",
+        "Produktionsfirmen, die kurzfristig Verstärkung suchen"
+      ]
+    },
+    {
+      "heading": "Aufgaben, die ich übernehme",
+      "paragraphs": [
+        "Ob Sie jemanden für den Streaming-Rechner, den Bildmischer oder eine Kameraposition brauchen: Ich übernehme klar definierte Aufgaben im Team oder die komplette technische Betreuung eines Setups."
+      ],
+      "bullets": [
+        "Betreuung von Streaming-Encodern und Software (vMix, OBS, mimoLive)",
+        "Bildmischung an Hardware-Mischern wie Blackmagic ATEM",
+        "Kameraarbeit mit Blackmagic-, Sony- und RED-Kameras",
+        "Einrichtung und Test von Signalwegen und Streaming-Zielen",
+        "Fehlersuche und schnelle Lösungen während der Veranstaltung",
+        "Einweisung Ihres Teams in bestehende Setups"
+      ]
+    },
+    {
+      "heading": "Schnell eingearbeitet, auch in fremde Setups",
+      "paragraphs": [
+        "Nach 20 Jahren in unterschiedlichen Bereichen der Bewegtbildproduktion kenne ich die gängigen Systeme und Arbeitsweisen. Ich brauche deshalb wenig Einarbeitung und Abstimmung und denke mit, wenn etwas nicht nach Plan läuft."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Anfrage",
+      "text": "Datum, Einsatzbereich und vorhandene Technik kurz schildern."
+    },
+    {
+      "title": "Abstimmung",
+      "text": "Rolle, Ablauf und Schnittstellen im Team klären."
+    },
+    {
+      "title": "Einsatz",
+      "text": "Unterstützung vor Ort, konzentriert und lösungsorientiert."
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/bildregie.webp",
+      "alt": "Jan Bruchwalski am Regieplatz"
+    },
+    {
+      "src": "/images/regie.webp",
+      "alt": "Technische Betreuung in der Regie"
+    }
+  ],
+  "testimonials": [
+    "Christian Grodau",
+    "Martin Kautzsch"
+  ],
+  "faq": [
+    {
+      "q": "Kann ich Sie kurzfristig buchen?",
+      "a": "Fragen Sie Ihr Wunschdatum über das Formular, per Telefon oder WhatsApp an. Ich melde mich so schnell wie möglich mit meiner Verfügbarkeit."
+    },
+    {
+      "q": "Mit welcher Technik arbeiten Sie?",
+      "a": "Unter anderem mit vMix, mimoLive, OBS und Blackmagic ATEM sowie Kameras von Blackmagic, Sony und RED."
+    },
+    {
+      "q": "Was kostet technischer Livestream-Support?",
+      "a": "Der Preis richtet sich nach Einsatzdauer, Anzahl der Kameras und Quellen, benötigter Technik sowie Auf- und Abbauzeit. Nach einem kurzen Briefing bekommen Sie ein verbindliches Angebot."
+    },
+    {
+      "q": "Übernehmen Sie auch mehrtägige Veranstaltungen?",
+      "a": "Ja. Ich unterstütze einzelne Einsatztage, mehrtägige Konferenzen und wiederkehrende Veranstaltungsreihen."
+    }
+  ],
+  "related": [
+    "bildregie-bildmischer-berlin",
+    "livestream-produktion-berlin",
+    "kameramann-berlin"
+  ],
+  "cta": "Support anfragen"
+}

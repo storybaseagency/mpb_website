@@ -1,0 +1,109 @@
+{
+  "order": 4,
+  "slug": "kameramann-berlin",
+  "title": "Kameramann",
+  "metaTitle": "Kameramann Berlin buchen – Event, Live & Dreh",
+  "metaDescription": "Kameramann in Berlin buchen: Events, Livestreams, Interviews und Drehs mit Blackmagic, Sony und RED. 20 Jahre Erfahrung, deutschlandweit im Einsatz.",
+  "h1": "Kameramann in Berlin für Events, Live und Drehs",
+  "teaser": "Kameraarbeit für Events, Livestreams, Interviews und Drehs, mit gutem Auge und technischem Verständnis.",
+  "image": "/images/kameraarbeit-unterwegs.webp",
+  "imageAlt": "Kameramann Jan Bruchwalski beim Dreh",
+  "answer": "Als Kameramann in Berlin filme ich Events, Konferenzen, Livestreams, Interviews und Imagedrehs, mit Kameras von Blackmagic, Sony und RED. Sie können mich als einzelnen Kameramann für Ihr Team buchen oder für komplette Drehs inklusive Schnitt. Mein Schwerpunkt sind Live- und Eventproduktionen.",
+  "video": "",
+  "highlights": [
+    {
+      "title": "Live & Event",
+      "text": "Kameraarbeit bei Konferenzen, auf Bühnen und bei Livestreams, auch mit Intercom und Bildregie."
+    },
+    {
+      "title": "Interviews & Drehs",
+      "text": "Interviews, Imagefilme und Reportagen im Studio oder unterwegs."
+    },
+    {
+      "title": "Eigene Kameras",
+      "text": "Blackmagic, Sony und RED, je nachdem, was die Produktion braucht."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Kameraarbeit für Live- und Eventproduktionen",
+      "paragraphs": [
+        "Bei Live-Produktionen muss der Kameramann vorausdenken: Wer spricht als Nächstes? Wo kommt die Reaktion im Publikum? Ich arbeite eng mit der Bildregie zusammen, setze Anweisungen über Intercom um und liefere Bilder, die sich gut schneiden lassen, auch wenn sich der Ablauf spontan ändert."
+      ],
+      "bullets": [
+        "Konferenzen, Podien und Bühnenprogramme",
+        "Livestreams mit mehreren Kamerapositionen",
+        "Eventdokumentation und Aftermovies",
+        "Studio-Talks und Video-Podcasts"
+      ]
+    },
+    {
+      "heading": "Interviews, Imagefilme und Drehs unterwegs",
+      "paragraphs": [
+        "Neben Live-Einsätzen drehe ich Interviews, Unternehmensvideos und Reportagen. Gedreht wird im Studio, beim Kunden oder unterwegs, vom Hafen bis aufs Schiff. Auf Wunsch übernehme ich auch den Schnitt, dann bekommen Sie das fertige Video aus einer Hand."
+      ]
+    },
+    {
+      "heading": "Kameramann buchen: einzeln oder mit Team",
+      "paragraphs": [
+        "Viele Kunden buchen mich als zusätzlichen Kameramann für ein bestehendes Team. Für größere Produktionen stelle ich bei Bedarf weitere Kameraleute und Technik aus meinem Netzwerk zusammen. Ihr Ansprechpartner bleibe ich."
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "title": "Anfrage",
+      "text": "Datum, Ort, Art des Drehs und gewünschte Technik schildern."
+    },
+    {
+      "title": "Abstimmung",
+      "text": "Ablauf, Kamerapositionen und Lieferformat festlegen."
+    },
+    {
+      "title": "Dreh",
+      "text": "Kameraarbeit vor Ort und Übergabe des Materials oder fertiger Schnitt."
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/images/kameraarbeit-see.webp",
+      "alt": "Kameraarbeit auf See bei Sonnenuntergang"
+    },
+    {
+      "src": "/images/dreharbeiten-hafen.webp",
+      "alt": "Dreharbeiten am Hafen"
+    },
+    {
+      "src": "/images/kamera-talk.webp",
+      "alt": "Kamera bei einer Talk-Aufzeichnung"
+    }
+  ],
+  "testimonials": [
+    "Lea Schermer",
+    "Christian Grodau"
+  ],
+  "faq": [
+    {
+      "q": "Was kostet ein Kameramann in Berlin?",
+      "a": "Das hängt von Einsatzdauer, Kameratechnik und gegebenenfalls Schnitt ab. Nach einem kurzen Briefing bekommen Sie ein Angebot."
+    },
+    {
+      "q": "Bringen Sie eigene Kameras mit?",
+      "a": "Ja, ich arbeite mit eigener Kameratechnik. Bei Multicam-Produktionen mit einheitlichen Kameras arbeite ich auch mit Ihrem Setup."
+    },
+    {
+      "q": "In welchem Format erhalte ich das Material?",
+      "a": "In dem Format, das Ihr Schnitt oder Ihre Plattform benötigt. Das Lieferformat stimmen wir vor dem Dreh ab."
+    },
+    {
+      "q": "Sind Sie auch außerhalb von Berlin buchbar?",
+      "a": "Ja, ich bin von Berlin-Spandau aus in ganz Berlin, Brandenburg und deutschlandweit im Einsatz."
+    }
+  ],
+  "related": [
+    "videoproduktion-berlin",
+    "livestream-produktion-berlin",
+    "bildregie-bildmischer-berlin"
+  ],
+  "cta": "Kameramann anfragen"
+}

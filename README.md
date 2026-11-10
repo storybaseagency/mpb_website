@@ -10,20 +10,36 @@ npm run dev     # http://localhost:3000
 npm run build   # erzeugt den Ordner out/
 ```
 
-## Inhalte pflegen
+## Inhalte pflegen (CMS)
 
-- `src/content/site.ts` – Kontaktdaten, Über mich, Kundenstimmen, Technik, Projektberichte
-- `src/content/services.ts` – die fünf Leistungsseiten (Texte, FAQ, Bilder, Video)
-- `src/lib/schema.ts` – strukturierte Daten (z. B. weitere Profile unter `sameAs`)
-- Bilder liegen in `public/images/`
+Texte, Bilder, Kundenstimmen, Referenzen und Videos werden im CMS unter
+**https://medienproduktionbruchwalski.de/admin/** bearbeitet (Sveltia CMS).
+Jede gespeicherte Änderung landet als Commit auf `main`; der automatische Upload
+stellt sie nach ca. 2 Minuten online. Hochgeladene Fotos werden automatisch in WebP
+umgewandelt und auf max. 2000 px verkleinert.
+
+Anmeldung mit einem GitHub-Token (einmalig anlegen):
+
+1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → *Generate new token*
+2. Resource owner: `storybaseagency`, Repository access: *Only select repositories* → `mpb_website`
+3. Permissions → Repository permissions → **Contents: Read and write**
+4. Token kopieren und im CMS bei *Mit Zugriffstoken anmelden* einfügen
+
+Die Inhalte liegen als JSON-Dateien in `content/`:
+
+- `content/leistungen/*.json` – die Leistungsseiten (eine Datei pro Seite)
+- `content/allgemein.json` – Startseite und Kontaktdaten
+- `content/ueber-mich.json`, `content/kundenstimmen.json`, `content/referenzen.json`
+
+Die Felder des CMS sind in `public/admin/config.yml` definiert. Das CMS-Skript wird
+beim Build aus `node_modules/@sveltia/cms` nach `public/admin/` kopiert.
 
 ### Video auf einer Leistungsseite einsetzen
 
-In `src/content/services.ts` bei der Leistung das Feld `video` setzen:
+Im CMS bei der Leistungsseite das Feld **Video** ausfüllen:
 
 - YouTube: `https://www.youtube-nocookie.com/embed/VIDEO-ID`
 - Vimeo: `https://player.vimeo.com/video/VIDEO-ID`
-- Eigene Datei: MP4 nach `public/videos/` legen und `/videos/datei.mp4` eintragen
 
 Ist das Feld leer, wird stattdessen das Titelbild der Leistung gezeigt.
 YouTube und Vimeo laden erst nach Klick (Datenschutz).

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Sveltia CMS (wird beim Build kopiert)
+/public/admin/sveltia-cms.js
+/public/admin/chunks/

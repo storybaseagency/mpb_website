@@ -1,0 +1,232 @@
+# Sveltia CMS – Konfiguration. Jede gespeicherte Änderung wird als Commit auf main gespeichert;
+# der automatische Upload stellt sie danach online (ca. 2 Minuten).
+backend:
+  name: github
+  repo: storybaseagency/mpb_website
+  branch: main
+  auth_methods: [token]
+  commit_messages:
+    create: "CMS: {{collection}} „{{slug}}“ angelegt"
+    update: "CMS: {{collection}} „{{slug}}“ geändert"
+    delete: "CMS: {{collection}} „{{slug}}“ gelöscht"
+    uploadMedia: "CMS: Bild „{{path}}“ hochgeladen"
+    deleteMedia: "CMS: Bild „{{path}}“ gelöscht"
+
+app_title: Medienproduktion Bruchwalski
+logo:
+  src: /images/signet.png
+site_url: https://medienproduktionbruchwalski.de
+
+media_folder: public/images
+public_folder: /images
+media_libraries:
+  default:
+    config:
+      slugify_filename: true
+      max_file_size: 26214400
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2000
+          height: 2000
+
+collections:
+  - name: leistungen
+    label: Leistungsseiten
+    label_singular: Leistungsseite
+    description: Die Seiten für deine Leistungen. Jede Seite hat eine eigene Adresse und eignet sich als Ziel für Anzeigen.
+    folder: content/leistungen
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: title
+    slug: "{{fields.slug}}"
+    sortable_fields: [order, title]
+    summary: "{{order}}. {{title}}  ·  /{{slug}}/"
+    fields:
+      - { name: title, label: Kurzname, hint: "Für Karten, Menü und Links, z. B. „Kameramann“." }
+      - name: slug
+        label: Adresse (URL)
+        hint: "Wird zu medienproduktionbruchwalski.de/…/. Nur Kleinbuchstaben und Bindestriche. Nach dem Veröffentlichen nicht mehr ändern, sonst gehen Google-Platzierung und Anzeigen-Links verloren."
+        pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Nur Kleinbuchstaben, Ziffern und Bindestriche"]
+      - { name: order, label: Reihenfolge, widget: number, value_type: int, min: 1, default: 9, hint: "Position auf der Startseite (1 = zuerst)." }
+      - { name: h1, label: Hauptüberschrift, hint: "Große Überschrift oben auf der Seite. Den Ort (Berlin) möglichst drin lassen." }
+      - { name: teaser, label: Kurzbeschreibung, widget: text, hint: "Unter der Überschrift und auf der Karte auf der Startseite." }
+      - { name: image, label: Titelbild, widget: image }
+      - { name: imageAlt, label: Bildbeschreibung, hint: "Was ist auf dem Bild zu sehen? Für Google und Screenreader." }
+      - name: video
+        label: Video
+        required: false
+        hint: "Optional. YouTube: https://www.youtube-nocookie.com/embed/VIDEO-ID · Vimeo: https://player.vimeo.com/video/VIDEO-ID. Leer lassen = Titelbild wird gezeigt."
+      - { name: videoPoster, label: Vorschaubild für Video, widget: image, required: false }
+      - { name: answer, label: Einleitung, widget: text, hint: "Erster Absatz unter dem Bild. Beantwortet kurz, was du anbietest und wo." }
+      - name: highlights
+        label: Vorteile (Kästen)
+        widget: list
+        summary: "{{fields.title}}"
+        fields:
+          - { name: title, label: Titel }
+          - { name: text, label: Text, widget: text }
+      - name: sections
+        label: Textabschnitte
+        widget: list
+        summary: "{{fields.heading}}"
+        fields:
+          - { name: heading, label: Zwischenüberschrift }
+          - name: paragraphs
+            label: Absätze
+            widget: list
+            field: { name: paragraph, label: Absatz, widget: text }
+          - name: bullets
+            label: Aufzählung
+            widget: list
+            required: false
+            field: { name: bullet, label: Punkt }
+      - name: table
+        label: Tabelle
+        widget: object
+        required: false
+        collapsed: true
+        hint: Optional, z. B. für Technik oder Setups. Drei Spalten.
+        fields:
+          - { name: caption, label: Überschrift }
+          - { name: head, label: Spaltentitel (genau 3), widget: list, min: 3, max: 3, field: { name: col, label: Spalte } }
+          - name: rows
+            label: Zeilen
+            widget: list
+            summary: "{{fields.a}}"
+            fields:
+              - { name: a, label: Spalte 1 }
+              - { name: b, label: Spalte 2 }
+              - { name: c, label: Spalte 3 }
+      - name: steps
+        label: Ablauf (Schritte)
+        widget: list
+        summary: "{{fields.title}}"
+        fields:
+          - { name: title, label: Titel }
+          - { name: text, label: Text, widget: text }
+      - name: gallery
+        label: Bilder (Galerie)
+        widget: list
+        summary: "{{fields.alt}}"
+        fields:
+          - { name: src, label: Bild, widget: image }
+          - { name: alt, label: Bildbeschreibung }
+      - name: testimonials
+        label: Kundenstimmen auf dieser Seite
+        widget: relation
+        collection: inhalte
+        file: kundenstimmen
+        search_fields: ["items.*.name"]
+        value_field: "items.*.name"
+        display_fields: ["items.*.name"]
+        multiple: true
+        required: false
+      - name: faq
+        label: Häufige Fragen
+        widget: list
+        summary: "{{fields.q}}"
+        fields:
+          - { name: q, label: Frage }
+          - { name: a, label: Antwort, widget: text }
+      - name: related
+        label: Verwandte Leistungen
+        widget: relation
+        collection: leistungen
+        search_fields: [title]
+        value_field: slug
+        display_fields: [title]
+        multiple: true
+        required: false
+      - { name: cta, label: Button-Text, default: Verfügbarkeit anfragen }
+      - { name: metaTitle, label: "Google: Titel", hint: "Titel im Suchergebnis, ca. 50–60 Zeichen. „| Bruchwalski“ wird automatisch angehängt." }
+      - { name: metaDescription, label: "Google: Beschreibung", widget: text, hint: "Text im Suchergebnis, höchstens ca. 155 Zeichen." }
+
+  - name: inhalte
+    label: Weitere Inhalte
+    description: Startseite, Kontaktdaten, Über mich, Kundenstimmen und Referenzen.
+    format: json
+    files:
+      - name: allgemein
+        label: Startseite & Kontaktdaten
+        file: content/allgemein.json
+        fields:
+          - { name: headline, label: Hauptüberschrift Startseite }
+          - { name: subline, label: Unterzeile Startseite }
+          - { name: homeTitle, label: "Google: Titel der Startseite" }
+          - { name: description, label: "Google: Beschreibung", widget: text, hint: "Höchstens ca. 155 Zeichen." }
+          - { name: linkedin, label: LinkedIn-Profil (Link) }
+          - name: contact
+            label: Kontaktdaten
+            widget: object
+            hint: Erscheinen im Impressum, im Footer und im Kontaktbereich.
+            fields:
+              - { name: person, label: Name }
+              - { name: street, label: Straße und Hausnummer }
+              - { name: city, label: PLZ und Ort }
+              - { name: email, label: E-Mail }
+              - { name: phone, label: Telefon, hint: "Wird auch für den WhatsApp-Button verwendet, z. B. 0160 7534434." }
+              - { name: vatId, label: USt-IdNr. }
+          - { name: whatsappText, label: Vorausgefüllter WhatsApp-Text, widget: text }
+      - name: ueber-mich
+        label: Über mich
+        file: content/ueber-mich.json
+        fields:
+          - { name: title, label: Überschrift }
+          - { name: intro, label: Einleitung, widget: text }
+          - name: paragraphs
+            label: Absätze
+            widget: list
+            field: { name: paragraph, label: Absatz, widget: text }
+          - { name: motivation, label: Motivation, widget: text }
+          - { name: image, label: Foto, widget: image }
+          - name: gear
+            label: Technik
+            widget: list
+            summary: "{{fields.title}}: {{fields.text}}"
+            fields:
+              - { name: title, label: Bereich }
+              - { name: text, label: Geräte und Software }
+      - name: kundenstimmen
+        label: Kundenstimmen
+        file: content/kundenstimmen.json
+        fields:
+          - name: items
+            label: Kundenstimmen
+            widget: list
+            summary: "{{fields.name}} ({{fields.topic}})"
+            fields:
+              - { name: topic, label: Thema, hint: "z. B. „Technik & Bildregie“" }
+              - { name: quote, label: Zitat, widget: text, hint: "Ohne Anführungszeichen." }
+              - { name: name, label: Name }
+              - { name: role, label: Funktion }
+      - name: referenzen
+        label: Referenzen (Projektberichte)
+        file: content/referenzen.json
+        fields:
+          - name: projekte
+            label: Projektberichte
+            widget: list
+            required: false
+            summary: "{{fields.title}}"
+            hint: Erscheinen auf der Seite Referenzen. Solange die Liste leer ist, wird der Abschnitt ausgeblendet.
+            fields:
+              - { name: title, label: Titel }
+              - { name: location, label: Ort / Location }
+              - name: service
+                label: Passende Leistung
+                widget: relation
+                collection: leistungen
+                search_fields: [title]
+                value_field: slug
+                display_fields: [title]
+              - { name: summary, label: Kurzbeschreibung, widget: text }
+              - name: facts
+                label: Eckdaten
+                widget: list
+                hint: "z. B. „4 Kameras“, „Livestream auf YouTube“"
+                field: { name: fact, label: Eckdatum }
+              - { name: image, label: Bild, widget: image }
